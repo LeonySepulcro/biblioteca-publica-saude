@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Urbanist", "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-wellhub-magenta: #F2496B;
+  --color-wellhub-dark-magenta: #590931;
+  --color-wellhub-purple: #A880FF;
+  --color-wellhub-green: #00E699;
+  --color-wellhub-offwhite: #FBF8EC;
+  --color-wellhub-black: #1D1D1F;
+  --color-wellhub-pink: #FF809F;
+  
+  --radius-wellhub: 32px;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-wellhub-offwhite);
+    color: var(--color-wellhub-black);
+    font-size: var(--app-font-size, 16px);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
