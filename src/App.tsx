@@ -230,7 +230,7 @@ export default function App() {
             )}
 
             {/* Categories Section */}
-            <section className="mt-16">
+            {!searchQuery && !selectedCategory && !activeFilter && <section className="mt-16">
               <div className="mb-8 flex items-center justify-between">
                 <h3 className="text-2xl font-black text-wellhub-black tracking-tight">O que você precisa hoje?</h3>
               </div>
@@ -259,10 +259,10 @@ export default function App() {
                   );
                 })}
               </div>
-            </section>
+            </section>}
 
             {/* Filters and Shortcut Labels */}
-            <div className="mt-12 flex flex-col gap-6 lg:flex-row lg:items-center">
+            {!searchQuery && <div className="mt-12 flex flex-col gap-6 lg:flex-row lg:items-center">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="mr-2 text-xs font-black uppercase tracking-widest text-slate-400">Atalhos rápidos:</span>
                 {filters.map((filter) => (
@@ -291,7 +291,7 @@ export default function App() {
                   Remover todos os filtros ×
                 </button>
               )}
-            </div>
+            </div>}
 
             {/* Results Grid */}
             <section className="mt-12">
@@ -571,7 +571,7 @@ function HelpView({ onBack }: { onBack: () => void }) {
           <h3 className="text-2xl font-black mb-2">Ainda com problemas?</h3>
           <p className="text-slate-400 mb-8 font-medium">Nossa equipe técnica está pronta para ajudar a garantir seu acesso à saúde.</p>
           <a 
-            href="mailto:suporte-tecnico@biblioteca-saude.gov.br" 
+            href="mailto:leony.sepulcro@gympass.com" 
             className="inline-flex items-center gap-3 bg-white text-wellhub-black px-8 py-4 rounded-full font-black hover:scale-105 transition-transform"
           >
             Relatar Erro no Site
