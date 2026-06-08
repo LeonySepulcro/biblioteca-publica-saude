@@ -33,7 +33,6 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { CATEGORIES, VIDEOS } from './constants';
 import { Video } from './types';
-import { AssistenteWidget } from './components/AssistenteWidget';
 // import { mapDriveToVideos } from './services/videoService'; // Removing unused service for consistency
 
 const IconMap: { [key: string]: any } = {
@@ -442,8 +441,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-
-      <AssistenteWidget />
     </div>
   );
 }
