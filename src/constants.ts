@@ -23,6 +23,7 @@ export const VIDEOS: Video[] = [
     tags: ['Sem equipamentos', 'Sentado'],
     intensity: 'Leve',
     isRecommended: true,
+    videoUrl: 'https://video.trainiac.fit/exercises/alternating_knees_to_chest/1.0.0/alternating_knees_to_chest_b_960_540.mp4',
     objetivo: 'Alongar os músculos adutores da coxa e melhorar a flexibilidade do quadril.',
     impacto: 'Reduz a rigidez da pelve e melhora a amplitude de movimentos simples diários.',
     instrucoes: [

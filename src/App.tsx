@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { 
   Search, 
   Clock, 
@@ -724,34 +724,48 @@ function VideoDetailView({ video, onBack }: { video: Video, onBack: () => void }
       <div className="flex flex-col lg:flex-row gap-12">
         {/* Left Side: Video/GIF */}
         <div className="lg:w-2/3">
-          <div className="relative aspect-video overflow-hidden rounded-[32px] bg-slate-950 shadow-2xl ring-1 ring-slate-800 flex flex-col items-center justify-center p-6 text-center select-none">
-            <div className="absolute inset-0 opacity-15">
-              <img src={video.thumbnail} alt="" className="h-full w-full object-cover blur-sm" />
-            </div>
-            
-            <div className="relative z-10 flex flex-col items-center">
-              <div className="relative flex items-center justify-center mb-6">
-                {/* Double spinners */}
-                <div className="absolute h-16 w-16 animate-spin rounded-full border-[3.5px] border-wellhub-green border-t-transparent" />
-                <div className="h-11 w-11 animate-spin rounded-full border-[3.5px] border-wellhub-magenta border-t-transparent animate-pulse" />
-                <Play className="absolute h-4 w-4 text-white/70" />
+          <div className="relative aspect-video overflow-hidden rounded-[32px] bg-slate-950 shadow-2xl ring-1 ring-slate-800">
+            {video.videoUrl ? (
+              <video
+                src={video.videoUrl}
+                className="h-full w-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+              />
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full p-6 text-center select-none">
+                <div className="absolute inset-0 opacity-15">
+                  <img src={video.thumbnail} alt="" className="h-full w-full object-cover blur-sm" />
+                </div>
+
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="relative flex items-center justify-center mb-6">
+                    {/* Double spinners */}
+                    <div className="absolute h-16 w-16 animate-spin rounded-full border-[3.5px] border-wellhub-green border-t-transparent" />
+                    <div className="h-11 w-11 animate-spin rounded-full border-[3.5px] border-wellhub-magenta border-t-transparent animate-pulse" />
+                    <Play className="absolute h-4 w-4 text-white/70" />
+                  </div>
+
+                  <h3 className="text-[22px] sm:text-[26px] font-black text-wellhub-green uppercase tracking-wide mb-3 px-4">
+                    Vídeo de Demonstração Reservado
+                  </h3>
+
+                  <p className="max-w-md text-base sm:text-[18px] font-semibold text-slate-300 px-6 leading-relaxed">
+                    O reprodutor oficial de alta fidelidade para <span className="text-white underline">{video.title}</span> está em curadoria técnica e homologação do Ministério da Saúde do SUS.
+                  </p>
+
+                  <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                    <span className="flex items-center gap-2 rounded-full bg-white/15 border border-white/20 px-5 py-2 text-xs font-black text-wellhub-green tracking-wider uppercase animate-pulse">
+                      <div className="h-2.5 w-2.5 rounded-full bg-wellhub-green" />
+                      status: aguardando upload / loading...
+                    </span>
+                  </div>
+                </div>
               </div>
-              
-              <h3 className="text-[22px] sm:text-[26px] font-black text-wellhub-green uppercase tracking-wide mb-3 px-4">
-                Vídeo de Demonstração Reservado
-              </h3>
-              
-              <p className="max-w-md text-base sm:text-[18px] font-semibold text-slate-300 px-6 leading-relaxed">
-                O reprodutor oficial de alta fidelidade para <span className="text-white underline">{video.title}</span> está em curadoria técnica e homologação do Ministério da Saúde do SUS.
-              </p>
-              
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                <span className="flex items-center gap-2 rounded-full bg-white/15 border border-white/20 px-5 py-2 text-xs font-black text-wellhub-green tracking-wider uppercase animate-pulse">
-                  <div className="h-2.5 w-2.5 rounded-full bg-wellhub-green" />
-                  status: aguardando upload / loading...
-                </span>
-              </div>
-            </div>
+            )}
           </div>
           
           <div className="mt-10 p-8 rounded-[32px] bg-white shadow-sm ring-1 ring-slate-100">
@@ -824,24 +838,51 @@ function VideoDetailView({ video, onBack }: { video: Video, onBack: () => void }
 }
 
 function VideoCard({ video, onClick }: { video: Video, onClick?: () => void }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   const intensityStyles = {
     'Leve': 'bg-wellhub-green/20 text-emerald-800 ring-wellhub-green/30',
     'Moderada': 'bg-wellhub-purple/20 text-indigo-800 ring-wellhub-purple/30',
     'Alta': 'bg-wellhub-magenta/20 text-rose-800 ring-wellhub-magenta/30',
   };
 
+  const handleMouseEnter = () => {
+    if (videoRef.current) videoRef.current.play().catch(() => {});
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
   return (
-    <div 
+    <div
       onClick={onClick}
+      onMouseEnter={video.videoUrl ? handleMouseEnter : undefined}
+      onMouseLeave={video.videoUrl ? handleMouseLeave : undefined}
       className="group cursor-pointer overflow-hidden rounded-[32px] bg-white p-3 shadow-md ring-1 ring-slate-100 transition-all hover:-translate-y-2 hover:shadow-xl hover:ring-wellhub-magenta/15 flex flex-col justify-between h-full"
     >
       <div>
         <div className="relative aspect-video overflow-hidden rounded-[24px]">
-          <img
-            src={video.thumbnail}
-            alt={video.title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
+          {video.videoUrl ? (
+            <video
+              ref={videoRef}
+              src={video.videoUrl}
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
+          ) : (
+            <img
+              src={video.thumbnail}
+              alt={video.title}
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          )}
           <div className="absolute inset-0 bg-black/15 opacity-0 transition-opacity group-hover:opacity-100" />
           
           <div className="absolute top-3 left-3 flex gap-2">
