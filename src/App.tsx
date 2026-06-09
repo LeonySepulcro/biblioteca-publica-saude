@@ -62,7 +62,8 @@ function LandingPage({ onLoginClick }: { onLoginClick: () => void }) {
         <img
           src="https://imagens.ebc.com.br/t_1P-O4_pRhfYPZR5jIC23wimN0=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/2025/08/29/2025.ago_br_govfederal_manual-de-uso_v1.2-4.jpg?itok=vRK4TNwa"
           alt="Governo Federal"
-          className="h-6 w-auto"
+          className="h-6 w-auto object-contain"
+          style={{ maxWidth: '160px' }}
         />
         <div className="h-4 w-px bg-slate-200" />
         <span className="text-xs font-semibold text-slate-500 tracking-tight">
@@ -126,7 +127,8 @@ function LandingPage({ onLoginClick }: { onLoginClick: () => void }) {
           <img
             src="https://imagens.ebc.com.br/t_1P-O4_pRhfYPZR5jIC23wimN0=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/2025/08/29/2025.ago_br_govfederal_manual-de-uso_v1.2-4.jpg?itok=vRK4TNwa"
             alt="Governo Federal"
-            className="h-10 w-auto mb-6"
+            className="h-10 w-auto object-contain mb-6"
+            style={{ maxWidth: '200px' }}
           />
           <h1 className="text-2xl font-black text-slate-900 leading-snug mb-2">
             Biblioteca Pública<br />de Saúde
@@ -168,6 +170,21 @@ function LandingPage({ onLoginClick }: { onLoginClick: () => void }) {
                 {f}
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Disclaimer */}
+      <div className="flex-none bg-amber-50 border-t-2 border-amber-400 px-6 py-4">
+        <div className="max-w-4xl mx-auto flex items-start gap-3">
+          <span className="text-2xl flex-shrink-0 mt-0.5">⚠️</span>
+          <div>
+            <p className="font-black text-amber-900 text-sm uppercase tracking-wide mb-0.5">
+              Protótipo — Apenas para demonstração
+            </p>
+            <p className="text-amber-800 text-sm leading-relaxed">
+              Este é um projeto em fase de desenvolvimento. Os vídeos exibidos são exemplos do acervo Trainiac e <strong>não correspondem ao exercício descrito no card</strong>. O conteúdo audiovisual final será produzido especificamente para esta plataforma em parceria com o Ministério da Saúde.
+            </p>
           </div>
         </div>
       </div>
@@ -757,7 +774,8 @@ export default function App() {
             <img 
               src="https://imagens.ebc.com.br/t_1P-O4_pRhfYPZR5jIC23wimN0=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/2025/08/29/2025.ago_br_govfederal_manual-de-uso_v1.2-4.jpg?itok=vRK4TNwa" 
               alt="Governo Federal do Brasil" 
-              className="h-12 w-auto"
+              className="h-12 w-auto object-contain"
+              style={{ maxWidth: '220px' }}
             />
             <div className="hidden h-6 w-px bg-slate-200 lg:block" />
             <h1 className="hidden text-base font-bold tracking-tight text-wellhub-black lg:block">
@@ -822,6 +840,21 @@ export default function App() {
         {renderContent()}
       </main>
 
+      {/* Prototype Disclaimer — sticky bottom bar */}
+      <div className="sticky bottom-0 z-40 w-full bg-amber-50 border-t-2 border-amber-400 px-4 py-3 shadow-lg">
+        <div className="mx-auto max-w-7xl flex items-center gap-3">
+          <span className="text-xl flex-shrink-0">⚠️</span>
+          <div className="flex-1 min-w-0">
+            <span className="font-black text-amber-900 text-sm uppercase tracking-wide mr-2">
+              Protótipo:
+            </span>
+            <span className="text-amber-800 text-sm">
+              Este é um projeto em fase de desenvolvimento. Os vídeos exibidos são exemplos do acervo Trainiac e <strong>não correspondem ao exercício descrito</strong> — são vídeos de exemplo apenas. O conteúdo final será produzido especificamente para esta plataforma.
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* Ministerial Trust Badge */}
       <div className="fixed bottom-6 left-6 z-50 hidden xl:block">
         <div className="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-emerald-500/10">
@@ -861,7 +894,8 @@ export default function App() {
               <img 
                 src="https://imagens.ebc.com.br/t_1P-O4_pRhfYPZR5jIC23wimN0=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/2025/08/29/2025.ago_br_govfederal_manual-de-uso_v1.2-4.jpg?itok=vRK4TNwa" 
                 alt="Brasil" 
-                className="h-10 w-auto grayscale opacity-50"
+                className="h-10 w-auto object-contain grayscale opacity-50"
+                style={{ maxWidth: '200px' }}
               />
               <div className="space-y-4">
                 <p className="max-w-xs text-sm font-bold text-slate-500">
