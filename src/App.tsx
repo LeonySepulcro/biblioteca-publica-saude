@@ -4,14 +4,14 @@
  */
 
 import { useState, useMemo, useEffect, useRef } from 'react';
-import { 
-  Search, 
-  Clock, 
-  Footprints, 
-  HeartPulse, 
-  Dumbbell, 
-  StretchHorizontal, 
-  Home, 
+import {
+  Search,
+  Clock,
+  Footprints,
+  HeartPulse,
+  Dumbbell,
+  StretchHorizontal,
+  Home,
   Brain,
   Play,
   CheckCircle2,
@@ -28,7 +28,12 @@ import {
   Settings,
   Monitor,
   Wifi,
-  Type
+  Type,
+  Eye,
+  EyeOff,
+  LogIn,
+  BadgeCheck,
+  LogOut
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CATEGORIES, VIDEOS } from './constants';
@@ -45,6 +50,254 @@ const IconMap: { [key: string]: any } = {
   Activity,
 };
 
+// ─────────────────────────────────────────────
+// GOV.BR LOGIN PAGE
+// ─────────────────────────────────────────────
+function GovBrLoginPage({ onSuccess, onBack }: { onSuccess: () => void; onBack: () => void }) {
+  const [step, setStep] = useState<'cpf' | 'senha'>('cpf');
+  const [cpf, setCpf] = useState('');
+  const [senha, setSenha] = useState('');
+  const [error, setError] = useState('');
+  const [showSenha, setShowSenha] = useState(false);
+
+  const formatCpf = (value: string) => {
+    const d = value.replace(/\D/g, '').slice(0, 11);
+    if (d.length <= 3) return d;
+    if (d.length <= 6) return `${d.slice(0,3)}.${d.slice(3)}`;
+    if (d.length <= 9) return `${d.slice(0,3)}.${d.slice(3,6)}.${d.slice(6)}`;
+    return `${d.slice(0,3)}.${d.slice(3,6)}.${d.slice(6,9)}-${d.slice(9)}`;
+  };
+
+  const handleCpfContinuar = () => {
+    const digits = cpf.replace(/\D/g, '');
+    if (digits === '123456789') {
+      setError('');
+      setStep('senha');
+    } else {
+      setError('CPF não encontrado. Verifique os dados e tente novamente.');
+    }
+  };
+
+  const handleSenhaEntrar = () => {
+    if (senha === 'trainiacgov') {
+      onSuccess();
+    } else {
+      setError('Senha incorreta. Verifique e tente novamente.');
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white flex flex-col" style={{ fontFamily: 'Rawline, Raleway, sans-serif' }}>
+      {/* gov.br top bar */}
+      <div className="w-full bg-white border-b border-gray-200 flex items-center justify-between px-6 py-2.5">
+        <span className="text-xl font-black tracking-tight select-none">
+          <span style={{ color: '#FFCD07' }}>gov</span>
+          <span style={{ color: '#168821' }}>.</span>
+          <span style={{ color: '#168821' }}>br</span>
+        </span>
+        <div className="flex items-center gap-5 text-xs text-gray-600">
+          <button className="flex items-center gap-1.5 hover:text-gray-900">
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full border border-gray-400 text-[10px] font-bold">i</span>
+            Alto Contraste
+          </button>
+          <button className="flex items-center gap-1.5 hover:text-gray-900">
+            <span className="text-base">🚀</span>
+            VLibras
+          </button>
+        </div>
+      </div>
+
+      {/* Main */}
+      <div className="flex flex-1 min-h-0">
+        {/* Left — image panel */}
+        <div className="hidden lg:flex flex-1 relative overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=900"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover object-top grayscale"
+          />
+          <div className="absolute inset-0" style={{ background: 'rgba(255,205,7,0.82)' }} />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full px-16 text-center">
+            <div className="text-6xl font-black mb-6 leading-none">
+              <span style={{ color: '#FFCD07', WebkitTextStroke: '2px #444' }}>gov</span>
+              <span style={{ color: 'white' }}>.</span>
+              <span style={{ color: 'white' }}>br</span>
+            </div>
+            <p className="text-white text-lg font-semibold max-w-xs leading-relaxed drop-shadow">
+              Uma <u className="font-black">conta gov.br</u> garante a identificação de cada cidadão que acessa os serviços digitais do governo
+            </p>
+          </div>
+        </div>
+
+        {/* Right — form panel */}
+        <div className="w-full lg:w-[480px] flex flex-col justify-center items-center px-8 py-12 bg-white shadow-2xl">
+          {/* Mobile logo */}
+          <div className="lg:hidden text-3xl font-black mb-8">
+            <span style={{ color: '#FFCD07' }}>gov</span>
+            <span style={{ color: '#168821' }}>.br</span>
+          </div>
+
+          <div className="w-full max-w-sm">
+            <h2 className="text-base font-bold text-gray-800 mb-5">
+              Identifique-se no gov.br com:
+            </h2>
+
+            {step === 'cpf' && (
+              <>
+                {/* CPF option highlight */}
+                <div className="flex items-start gap-3 mb-5 p-3 rounded-lg border-2" style={{ borderColor: '#1351B4', background: '#f0f4ff' }}>
+                  <div className="w-8 h-8 rounded flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#1351B4' }}>
+                    <span className="text-white text-[10px] font-black">CPF</span>
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-800 text-sm">Número do CPF</p>
+                    <p className="text-xs text-gray-500 mt-0.5">
+                      Digite seu CPF para <strong>criar</strong> ou <strong>acessar</strong> sua conta gov.br
+                    </p>
+                  </div>
+                </div>
+
+                <label className="block text-sm font-semibold text-gray-700 mb-1">CPF</label>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  placeholder="Digite seu CPF"
+                  value={cpf}
+                  autoFocus
+                  onChange={e => setCpf(formatCpf(e.target.value))}
+                  onKeyDown={e => e.key === 'Enter' && handleCpfContinuar()}
+                  className="w-full border border-gray-400 rounded px-3 py-2 text-sm mb-1 focus:outline-none focus:ring-2"
+                  style={{ focusRingColor: '#1351B4' } as any}
+                />
+                {error && (
+                  <p className="text-red-600 text-xs mb-2 flex items-center gap-1">
+                    <span>⚠</span> {error}
+                  </p>
+                )}
+                <button
+                  onClick={handleCpfContinuar}
+                  className="w-full py-2.5 rounded font-bold text-white text-sm mt-2 mb-6 transition hover:opacity-90 active:scale-95"
+                  style={{ backgroundColor: '#1351B4' }}
+                >
+                  Continuar
+                </button>
+
+                {/* Divider + other options */}
+                <div className="border-t border-gray-200 pt-4">
+                  <p className="text-sm font-semibold text-gray-700 mb-3">Outras opções de identificação:</p>
+                  <div className="space-y-3">
+                    {[
+                      { icon: '🏦', label: 'Login com seu banco', badge: 'SUA CONTA SERÁ PRATA' },
+                      { icon: '⊞', label: 'Login com QR code', badge: null },
+                      { icon: '🔐', label: 'Seu certificado digital', badge: null },
+                      { icon: '☁️', label: 'Seu certificado digital em nuvem', badge: null },
+                    ].map(opt => (
+                      <button
+                        key={opt.label}
+                        className="flex items-center gap-3 w-full text-left text-sm p-1 rounded hover:bg-gray-50"
+                      >
+                        <span className="text-lg">{opt.icon}</span>
+                        <span style={{ color: '#1351B4' }} className="font-medium">{opt.label}</span>
+                        {opt.badge && (
+                          <span className="ml-1 text-[10px] bg-green-600 text-white px-1.5 py-0.5 rounded font-black tracking-tight">
+                            {opt.badge}
+                          </span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+
+            {step === 'senha' && (
+              <>
+                {/* CPF badge */}
+                <div className="flex items-center gap-3 mb-5 p-3 rounded-lg bg-gray-50 border border-gray-200">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-sm" style={{ backgroundColor: '#1351B4' }}>
+                    {cpf.replace(/\D/g,'').slice(0,2)}
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-bold text-gray-800 text-sm">CPF: {cpf}</p>
+                    <button
+                      onClick={() => { setStep('cpf'); setSenha(''); setError(''); }}
+                      className="text-xs underline"
+                      style={{ color: '#1351B4' }}
+                    >
+                      Não sou eu
+                    </button>
+                  </div>
+                </div>
+
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Senha</label>
+                <p className="text-xs text-gray-500 mb-2">Digite a senha da conta gov.br</p>
+                <div className="relative mb-1">
+                  <input
+                    type={showSenha ? 'text' : 'password'}
+                    placeholder="Digite sua senha"
+                    value={senha}
+                    autoFocus
+                    onChange={e => setSenha(e.target.value)}
+                    onKeyDown={e => e.key === 'Enter' && handleSenhaEntrar()}
+                    className="w-full border border-gray-400 rounded px-3 py-2 text-sm pr-20 focus:outline-none focus:ring-2"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowSenha(v => !v)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold"
+                    style={{ color: '#1351B4' }}
+                  >
+                    {showSenha ? 'Ocultar' : 'Mostrar'}
+                  </button>
+                </div>
+                {error && (
+                  <p className="text-red-600 text-xs mb-2 flex items-center gap-1">
+                    <span>⚠</span> {error}
+                  </p>
+                )}
+                <button
+                  onClick={handleSenhaEntrar}
+                  className="w-full py-2.5 rounded font-bold text-white text-sm mt-2 mb-3 transition hover:opacity-90 active:scale-95"
+                  style={{ backgroundColor: '#1351B4' }}
+                >
+                  Entrar
+                </button>
+                <div className="text-center">
+                  <button className="text-sm underline" style={{ color: '#1351B4' }}>
+                    Esqueci minha senha
+                  </button>
+                </div>
+              </>
+            )}
+
+            <div className="mt-8 pt-5 border-t border-gray-100 text-center">
+              <button
+                onClick={onBack}
+                className="text-xs text-gray-400 hover:text-gray-600 flex items-center gap-1.5 mx-auto"
+              >
+                <ArrowLeft className="w-3 h-3" />
+                Voltar para a Biblioteca Pública de Saúde
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="bg-gray-50 border-t border-gray-200 py-3 text-center">
+        <p className="text-xs text-gray-400">
+          <a href="#" className="hover:underline" style={{ color: '#1351B4' }}>Está com dúvidas e precisa de ajuda?</a>
+          {' · '}
+          <a href="#" className="hover:underline" style={{ color: '#1351B4' }}>Termo de Uso e Aviso de Privacidade</a>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────
+// MAIN APP
+// ─────────────────────────────────────────────
 export default function App() {
   const [view, setView] = useState<'home' | 'faq' | 'ajuda' | 'privacidade' | 'termos' | 'video-detail'>('home');
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
@@ -54,6 +307,8 @@ export default function App() {
   const [isSearching, setIsSearching] = useState(false);
   const [videos, setVideos] = useState<Video[]>([]);
   const [fontSizeLevel, setFontSizeLevel] = useState(0);
+  const [showGovLogin, setShowGovLogin] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const fontSizes = ['16px', '20px', '24px'];
 
@@ -334,6 +589,18 @@ export default function App() {
     }
   };
 
+  if (showGovLogin) {
+    return (
+      <GovBrLoginPage
+        onSuccess={() => {
+          setIsAuthenticated(true);
+          setShowGovLogin(false);
+        }}
+        onBack={() => setShowGovLogin(false)}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-wellhub-offwhite font-sans text-wellhub-black selection:bg-wellhub-magenta/20">
       {/* Header */}
@@ -354,17 +621,49 @@ export default function App() {
             </h1>
           </div>
           
-          <div className="flex items-center gap-6">
-            <button 
+          <div className="flex items-center gap-3 sm:gap-4">
+            <button
               onClick={toggleFontSize}
-              className="flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-sm font-bold text-slate-700 transition-colors hover:bg-slate-200"
+              className="flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2 text-sm font-bold text-slate-700 transition-colors hover:bg-slate-200"
               title="Aumentar texto"
             >
               <span className="text-base font-black">A+</span>
               <span className="hidden sm:inline">Acessibilidade</span>
             </button>
 
-            <div className="flex flex-col items-end">
+            {/* Gov.br Auth Button */}
+            {isAuthenticated ? (
+              <div className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-bold bg-green-50 ring-1 ring-green-300 text-green-800">
+                <BadgeCheck className="h-4 w-4 text-green-600" />
+                <span className="hidden sm:inline text-xs">Autenticado</span>
+                <span className="font-black text-xs">
+                  <span style={{ color: '#FFCD07', WebkitTextStroke: '0.5px #888' }}>gov</span>
+                  <span style={{ color: '#168821' }}>.br</span>
+                </span>
+                <button
+                  onClick={() => setIsAuthenticated(false)}
+                  title="Sair"
+                  className="ml-1 text-gray-400 hover:text-red-500"
+                >
+                  <LogOut className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setShowGovLogin(true)}
+                className="flex items-center gap-2 rounded-full px-3 py-2 text-sm font-bold text-white transition hover:opacity-90 active:scale-95"
+                style={{ backgroundColor: '#1351B4' }}
+              >
+                <LogIn className="h-4 w-4" />
+                <span className="hidden sm:inline">Entrar com</span>
+                <span className="font-black">
+                  <span style={{ color: '#FFCD07' }}>gov</span>
+                  <span style={{ color: '#a3e635' }}>.br</span>
+                </span>
+              </button>
+            )}
+
+            <div className="hidden md:flex flex-col items-end">
               <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Parceria Social</span>
               <div className="flex items-center gap-2">
                 <span className="text-xl font-black tracking-tighter text-wellhub-magenta">wellhub</span>
