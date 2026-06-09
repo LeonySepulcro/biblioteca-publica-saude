@@ -51,6 +51,131 @@ const IconMap: { [key: string]: any } = {
 };
 
 // ─────────────────────────────────────────────
+// LANDING PAGE — preview before login
+// ─────────────────────────────────────────────
+function LandingPage({ onLoginClick }: { onLoginClick: () => void }) {
+  const previewVideos = VIDEOS.slice(0, 9);
+  return (
+    <div className="h-screen overflow-hidden flex flex-col" style={{ fontFamily: 'sans-serif' }}>
+      {/* Top bar */}
+      <div className="flex-none h-10 bg-white border-b border-slate-200 flex items-center px-6 gap-3 z-10">
+        <img
+          src="https://imagens.ebc.com.br/t_1P-O4_pRhfYPZR5jIC23wimN0=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/2025/08/29/2025.ago_br_govfederal_manual-de-uso_v1.2-4.jpg?itok=vRK4TNwa"
+          alt="Governo Federal"
+          className="h-6 w-auto"
+        />
+        <div className="h-4 w-px bg-slate-200" />
+        <span className="text-xs font-semibold text-slate-500 tracking-tight">
+          Biblioteca Pública de Saúde
+        </span>
+        <span className="ml-auto text-[10px] font-bold uppercase tracking-widest text-slate-400">
+          Ministério da Saúde · Wellhub
+        </span>
+      </div>
+
+      {/* Body */}
+      <div className="flex flex-1 overflow-hidden">
+
+        {/* LEFT — blurred library preview */}
+        <div className="flex-1 relative overflow-hidden bg-slate-100">
+          {/* Blurred cards */}
+          <div
+            className="absolute inset-0 p-5 overflow-hidden pointer-events-none"
+            style={{ filter: 'blur(2.5px)', transform: 'scale(1.03)', transformOrigin: 'top left' }}
+          >
+            <div className="grid grid-cols-3 gap-3">
+              {previewVideos.map(v => (
+                <div key={v.id} className="rounded-2xl overflow-hidden bg-white shadow-sm ring-1 ring-slate-100">
+                  <div className="aspect-video bg-slate-200 overflow-hidden">
+                    {v.videoUrl
+                      ? <video src={v.videoUrl} muted playsInline preload="metadata" className="w-full h-full object-cover" />
+                      : <img src={v.thumbnail} alt="" className="w-full h-full object-cover" />
+                    }
+                  </div>
+                  <div className="p-3">
+                    <p className="text-xs font-bold text-slate-700 truncate">{v.title}</p>
+                    <div className="h-2 bg-slate-100 rounded-full w-2/3 mt-1.5" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dark + rightward gradient */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: 'linear-gradient(to right, rgba(15,23,42,0.45) 0%, rgba(15,23,42,0.15) 55%, rgba(248,250,252,0.95) 100%)' }}
+          />
+
+          {/* Centre lock badge */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-10">
+            <div className="w-16 h-16 rounded-2xl bg-white shadow-xl flex items-center justify-center mb-4 ring-1 ring-slate-200">
+              <Lock className="h-7 w-7 text-slate-500" />
+            </div>
+            <p className="text-white font-black text-2xl max-w-xs leading-snug drop-shadow-lg">
+              28 exercícios validados pelo Ministério da Saúde
+            </p>
+            <p className="text-white/70 text-sm mt-2 max-w-xs drop-shadow">
+              Faça login com sua conta gov.br para acessar o conteúdo completo
+            </p>
+          </div>
+        </div>
+
+        {/* RIGHT — login panel */}
+        <div className="flex-none w-[360px] bg-white shadow-2xl flex flex-col justify-center px-10 py-10 border-l border-slate-100">
+          <img
+            src="https://imagens.ebc.com.br/t_1P-O4_pRhfYPZR5jIC23wimN0=/1170x700/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/2025/08/29/2025.ago_br_govfederal_manual-de-uso_v1.2-4.jpg?itok=vRK4TNwa"
+            alt="Governo Federal"
+            className="h-10 w-auto mb-6"
+          />
+          <h1 className="text-2xl font-black text-slate-900 leading-snug mb-2">
+            Biblioteca Pública<br />de Saúde
+          </h1>
+          <p className="text-slate-500 text-sm leading-relaxed mb-7">
+            Plataforma oficial de exercícios do Ministério da Saúde para cidadãos brasileiros.
+          </p>
+
+          <div className="border-t border-slate-100 mb-7" />
+
+          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
+            Acesso ao conteúdo
+          </p>
+          <button
+            onClick={onLoginClick}
+            className="w-full flex items-center justify-center gap-2.5 py-3 px-4 rounded-lg font-bold text-white text-sm transition hover:opacity-90 active:scale-95 shadow-md"
+            style={{ backgroundColor: '#1351B4', boxShadow: '0 4px 16px rgba(19,81,180,0.35)' }}
+          >
+            <LogIn className="h-4 w-4 flex-shrink-0" />
+            <span>Entrar com</span>
+            <span className="font-black text-base leading-none">
+              <span style={{ color: '#FFCD07' }}>gov</span>
+              <span style={{ color: '#a3e635' }}>.br</span>
+            </span>
+          </button>
+          <p className="text-[11px] text-slate-400 text-center mt-2">
+            Identificação segura via conta gov.br
+          </p>
+
+          <div className="mt-8 pt-6 border-t border-slate-100 space-y-2.5">
+            {[
+              'Exercícios sem equipamentos',
+              'Para todas as idades e condições',
+              'Conteúdo validado pelo SUS',
+              'Acesso gratuito para todos os cidadãos',
+            ].map(f => (
+              <div key={f} className="flex items-center gap-2.5 text-sm text-slate-600">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 flex-shrink-0" />
+                {f}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────
 // GOV.BR LOGIN PAGE
 // ─────────────────────────────────────────────
 function GovBrLoginPage({ onSuccess, onBack }: { onSuccess: () => void; onBack: () => void }) {
@@ -109,22 +234,37 @@ function GovBrLoginPage({ onSuccess, onBack }: { onSuccess: () => void; onBack: 
 
       {/* Main */}
       <div className="flex flex-1 min-h-0">
-        {/* Left — image panel */}
-        <div className="hidden lg:flex flex-1 relative overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=900"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover object-top grayscale"
-          />
-          <div className="absolute inset-0" style={{ background: 'rgba(255,205,7,0.82)' }} />
-          <div className="relative z-10 flex flex-col items-center justify-center h-full px-16 text-center">
-            <div className="text-6xl font-black mb-6 leading-none">
-              <span style={{ color: '#FFCD07', WebkitTextStroke: '2px #444' }}>gov</span>
-              <span style={{ color: 'white' }}>.</span>
-              <span style={{ color: 'white' }}>br</span>
+        {/* Left — official gov.br style image panel */}
+        <div className="hidden lg:flex flex-1 relative overflow-hidden" style={{ background: '#f0eeea' }}>
+          {/* Yellow vertical band */}
+          <div className="absolute left-0 top-0 bottom-0" style={{ width: '40%', backgroundColor: '#FFCD07' }} />
+
+          {/* Woman photo — grayscale + yellow tint */}
+          <div className="absolute left-0 top-0 bottom-0" style={{ width: '54%' }}>
+            <img
+              src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=600&h=900&face"
+              alt=""
+              className="w-full h-full object-cover object-top"
+              style={{ filter: 'grayscale(1) brightness(0.88)' }}
+            />
+            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(255, 200, 0, 0.42)' }} />
+          </div>
+
+          {/* gov.br logo + tagline — right half */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col px-10" style={{ width: '54%' }}>
+            <div className="text-6xl font-black leading-none mb-5" style={{ letterSpacing: '-1px' }}>
+              <span style={{ color: '#1351B4' }}>gov</span>
+              <span style={{ color: '#168821' }}>.</span>
+              <span style={{ color: '#1351B4' }}>br</span>
             </div>
-            <p className="text-white text-lg font-semibold max-w-xs leading-relaxed drop-shadow">
-              Uma <u className="font-black">conta gov.br</u> garante a identificação de cada cidadão que acessa os serviços digitais do governo
+            <p className="text-gray-700 text-base font-medium leading-[1.7]">
+              Uma{' '}
+              <strong style={{ fontWeight: 800, textDecoration: 'underline', textDecorationColor: '#FFCD07', textDecorationThickness: '3px' }}>
+                conta gov.br
+              </strong>
+              <br />garante a identificação<br />
+              de cada cidadão que acessa<br />
+              os serviços digitais do governo
             </p>
           </div>
         </div>
@@ -599,6 +739,10 @@ export default function App() {
         onBack={() => setShowGovLogin(false)}
       />
     );
+  }
+
+  if (!isAuthenticated) {
+    return <LandingPage onLoginClick={() => setShowGovLogin(true)} />;
   }
 
   return (
