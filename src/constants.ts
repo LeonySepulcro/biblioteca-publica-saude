@@ -282,7 +282,7 @@ export const VIDEOS: Video[] = [
     tags: ['Sem equipamentos', 'Glúteos'],
     intensity: 'Moderada',
     isRecommended: true,
-    videoUrl: 'https://video.trainiac.fit/exercises/kb_farmers_carry/1.0.0/kb_farmers_carry_b_960_540.mp4',
+    videoUrl: 'https://video.trainiac.fit/exercises/plank_up_down/1.0.0/plank_up_down_b_960_540.mp4',
     objetivo: 'Fortalecer os glúteos, isquiotibiais e músculos do assoalho pélvico.',
     impacto: 'Estabiliza a bacia e atua diretamente na prevenção e alívio da dor lombar.',
     instrucoes: [
@@ -635,7 +635,7 @@ export const VIDEOS: Video[] = [
     category: 'cardio-leve',
     tags: ['Sem equipamentos', 'Simples'],
     intensity: 'Leve',
-    videoUrl: 'https://video.trainiac.fit/exercises/kb_farmers_carry/1.0.0/kb_farmers_carry_b_960_540.mp4',
+    videoUrl: 'https://video.trainiac.fit/exercises/plank_balance/1.0.0/plank_balance_b_960_540.mp4',
     objetivo: 'Simular uma caminhada contínua dentro do espaço doméstico, ativando circulação e batimentos.',
     impacto: 'Aumenta as calorias gastas, melhora a disposição corporal e ativa a endorfina digestiva.',
     instrucoes: [
