@@ -840,21 +840,6 @@ export default function App() {
         {renderContent()}
       </main>
 
-      {/* Prototype Disclaimer — sticky bottom bar */}
-      <div className="sticky bottom-0 z-40 w-full bg-amber-50 border-t-2 border-amber-400 px-4 py-3 shadow-lg">
-        <div className="mx-auto max-w-7xl flex items-center gap-3">
-          <span className="text-xl flex-shrink-0">⚠️</span>
-          <div className="flex-1 min-w-0">
-            <span className="font-black text-amber-900 text-sm uppercase tracking-wide mr-2">
-              Protótipo:
-            </span>
-            <span className="text-amber-800 text-sm">
-              Este é um projeto em fase de desenvolvimento. Os vídeos exibidos são exemplos do acervo Trainiac e <strong>não correspondem ao exercício descrito</strong> — são vídeos de exemplo apenas. O conteúdo final será produzido especificamente para esta plataforma.
-            </span>
-          </div>
-        </div>
-      </div>
-
       {/* Ministerial Trust Badge */}
       <div className="fixed bottom-6 left-6 z-50 hidden xl:block">
         <div className="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-xl ring-1 ring-emerald-500/10">
