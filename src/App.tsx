@@ -206,11 +206,13 @@ export default function App() {
                       <div className="relative w-full max-w-sm shrink-0 lg:max-w-md">
                         <div className="aspect-video overflow-hidden rounded-[24px] ring-1 ring-white/10 shadow-2xl bg-black">
                           {seasonalHighlight.video.videoUrl ? (
-                            <iframe 
-                              src={seasonalHighlight.video.videoUrl} 
-                              className="h-full w-full rounded-[24px] border-none"
-                              allow="autoplay"
-                              title={seasonalHighlight.video.title}
+                            <video
+                              src={seasonalHighlight.video.videoUrl}
+                              className="h-full w-full rounded-[24px] object-cover"
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
                             />
                           ) : (
                             <>

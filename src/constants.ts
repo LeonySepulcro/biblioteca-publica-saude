@@ -47,6 +47,7 @@ export const VIDEOS: Video[] = [
     category: 'mobilidade-alongamento',
     tags: ['Sem equipamentos', 'Fácil'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/airplanes/1.0.0/airplanes_b_960_540.mp4',
     objetivo: 'Alongar os ombros e a parte superior das costas, aliviando tensões acumuladas.',
     impacto: 'Alivia dores nas costas decorrentes de longos períodos sentado e melhora a postura.',
     instrucoes: [
@@ -70,6 +71,7 @@ export const VIDEOS: Video[] = [
     tags: ['Com bastão', 'Ombros'],
     intensity: 'Leve',
     isRecommended: true,
+    videoUrl: 'https://video.trainiac.fit/exercises/alternating_superman/1.0.0/alternating_superman_b_960_540.mp4',
     objetivo: 'Restaurar a mobilidade da articulação dos ombros e melhorar a expansão torácica.',
     impacto: 'Reduz o encurtamento peitoral, prevenindo dores crônicas nos ombros e pescoço.',
     instrucoes: [
@@ -92,6 +94,7 @@ export const VIDEOS: Video[] = [
     category: 'mobilidade-alongamento',
     tags: ['Sem equipamentos', 'Equilíbrio'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/bb_back_squat_f_front/1.0.0/bb_back_squat_f_front_b_960_540.mp4',
     objetivo: 'Aquecer e lubrificar a articulação coxofemoral com balanços controlados.',
     impacto: 'Aumenta a estabilidade nas pernas e melhora o equilíbrio dinâmico.',
     instrucoes: [
@@ -114,6 +117,7 @@ export const VIDEOS: Video[] = [
     category: 'mobilidade-alongamento',
     tags: ['Sem equipamentos', 'Posturar'],
     intensity: 'Moderada',
+    videoUrl: 'https://video.trainiac.fit/exercises/m_leg_extensions/1.0.0/m_leg_extensions_b_960_540.mp4',
     objetivo: 'Alongar a cadeia posterior das pernas (isquiotibiais) e glúteos.',
     impacto: 'Alivia tensões na região lombar decorrentes de rigidez nas pernas.',
     instrucoes: [
@@ -136,6 +140,7 @@ export const VIDEOS: Video[] = [
     category: 'mobilidade-alongamento',
     tags: ['Sem equipamentos', 'Lombar'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/m_seated_hip_abduction/1.0.0/m_seated_hip_abduction_b_960_540.mp4',
     objetivo: 'Mobilizar a pelve e a coluna lombar em movimentos circulares profundos.',
     impacto: 'Diminui a rigidez matinal e melhora o retorno venoso nas pernas.',
     instrucoes: [
@@ -159,6 +164,7 @@ export const VIDEOS: Video[] = [
     tags: ['Deitado', 'Relaxar'],
     intensity: 'Leve',
     isRecommended: true,
+    videoUrl: 'https://video.trainiac.fit/exercises/m_unilateral_leg_curl/1.0.0/m_unilateral_leg_curl_b_960_540.mp4',
     objetivo: 'Alongar a musculatura lombar e os músculos glúteos de forma suave.',
     impacto: 'Alívio imediato para desconfortos lombares e compressão sacral.',
     instrucoes: [
@@ -181,6 +187,7 @@ export const VIDEOS: Video[] = [
     category: 'mobilidade-alongamento',
     tags: ['De pé', 'Apoio'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/db_rdl/1.0.0/db_rdl_b_960_540.mp4',
     objetivo: 'Alongar o quadríceps (parte anterior da coxa) e abrir o flexor do quadril.',
     impacto: 'Previne dores nas patelas e melhora o alinhamento da coluna lombar.',
     instrucoes: [
@@ -203,6 +210,7 @@ export const VIDEOS: Video[] = [
     category: 'mobilidade-alongamento',
     tags: ['Sem equipamentos', 'Tronco'],
     intensity: 'Moderada',
+    videoUrl: 'https://video.trainiac.fit/exercises/hollow_hold_rock/1.0.0/hollow_hold_rock_b_960_540.mp4',
     objetivo: 'Treinar a rotação torácica ativa com estabilização do quadril.',
     impacto: 'Melhora a mobilidade das costas e costas superiores, reduzindo nós musculares.',
     instrucoes: [
@@ -225,6 +233,7 @@ export const VIDEOS: Video[] = [
     category: 'mobilidade-alongamento',
     tags: ['De joelhos', 'Coluna'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/in_and_outs/1.0.0/in_and_outs_b_960_540.mp4',
     objetivo: 'Mobilizar a coluna inteira do cóccix até o pescoço em flexão e extensão.',
     impacto: 'Aumenta a lubrificação discal e relaxa os eretores da espinha.',
     instrucoes: [
@@ -247,6 +256,7 @@ export const VIDEOS: Video[] = [
     category: 'mobilidade-alongamento',
     tags: ['Sem equipamentos', 'Fácil'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/kb_half_kneeling_windmill/1.0.0/kb_half_kneeling_windmill_b_960_540.mp4',
     objetivo: 'Melhorar a dorsiflexão do tornozelo, alongando a fáscia plantar e a panturrilha.',
     impacto: 'Melhora o padrão de agachamento e reduz a propensão a entorses.',
     instrucoes: [
@@ -272,6 +282,7 @@ export const VIDEOS: Video[] = [
     tags: ['Sem equipamentos', 'Glúteos'],
     intensity: 'Moderada',
     isRecommended: true,
+    videoUrl: 'https://video.trainiac.fit/exercises/kb_farmers_carry/1.0.0/kb_farmers_carry_b_960_540.mp4',
     objetivo: 'Fortalecer os glúteos, isquiotibiais e músculos do assoalho pélvico.',
     impacto: 'Estabiliza a bacia e atua diretamente na prevenção e alívio da dor lombar.',
     instrucoes: [
@@ -294,6 +305,7 @@ export const VIDEOS: Video[] = [
     category: 'fortalecimento-postura',
     tags: ['Deitado', 'Costas'],
     intensity: 'Moderada',
+    videoUrl: 'https://video.trainiac.fit/exercises/kb_half_kneeling_press/1.0.0/kb_half_kneeling_press_b_960_540.mp4',
     objetivo: 'Fortalecer os eretores da espinha e estabilizadores escapulares posteriores.',
     impacto: 'Alinhamento postural imediato e ativação dos músculos defasados pelo uso do celular.',
     instrucoes: [
@@ -316,6 +328,7 @@ export const VIDEOS: Video[] = [
     category: 'fortalecimento-postura',
     tags: ['Sem equipamentos', 'Desafio'],
     intensity: 'Alta',
+    videoUrl: 'https://video.trainiac.fit/exercises/plank_up_down/1.0.0/plank_up_down_b_960_540.mp4',
     objetivo: 'Desenvolver a força integrada do core, estabilidade escapular e flexibilidade posterior.',
     impacto: 'Melhora o tônus muscular de todo o corpo e estabilidade postural de forma global.',
     instrucoes: [
@@ -338,6 +351,7 @@ export const VIDEOS: Video[] = [
     category: 'fortalecimento-postura',
     tags: ['Com degrau', 'Pernas'],
     intensity: 'Moderada',
+    videoUrl: 'https://video.trainiac.fit/exercises/plank_balance/1.0.0/plank_balance_b_960_540.mp4',
     objetivo: 'Fortalecer a coxa (quadríceps) e os glúteos de forma unilateral.',
     impacto: 'Facilita tarefas como subir escadas, carregar peso e melhora a mobilidade dos joelhos.',
     instrucoes: [
@@ -361,6 +375,7 @@ export const VIDEOS: Video[] = [
     tags: ['Isométrico', 'Sem equipamentos'],
     intensity: 'Moderada',
     isRecommended: true,
+    videoUrl: 'https://video.trainiac.fit/exercises/plank/1.0.0/plank_b_960_540.mp4',
     objetivo: 'Fortalecer o músculo quadríceps e a articulação do joelho através de esforço isométrico estático.',
     impacto: 'Aumenta consideravelmente a resistência muscular inferior sem impacto direto nas juntas.',
     instrucoes: [
@@ -383,6 +398,7 @@ export const VIDEOS: Video[] = [
     category: 'fortalecimento-postura',
     tags: ['Pernas', 'Controle'],
     intensity: 'Moderada',
+    videoUrl: 'https://video.trainiac.fit/exercises/airplanes/1.0.0/airplanes_b_960_540.mp4',
     objetivo: 'Trabalhar a força excêntrica das coxas e o equilíbrio postural fino na descida.',
     impacto: 'Altamente funcional para descer degraus, ladeiras e reforçar os tendões do joelho.',
     instrucoes: [
@@ -405,6 +421,7 @@ export const VIDEOS: Video[] = [
     category: 'fortalecimento-postura',
     tags: ['Deitado', 'Quadril'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/alternating_superman/1.0.0/alternating_superman_b_960_540.mp4',
     objetivo: 'Isolar e fortalecer o glúteo médio, músculo fundamental para a estabilização do quadril.',
     impacto: 'Estabiliza a marcha e previne dores ocultas nos quadris e na lombar ao caminhar.',
     instrucoes: [
@@ -427,6 +444,7 @@ export const VIDEOS: Video[] = [
     category: 'fortalecimento-postura',
     tags: ['Membros Superiores', 'Fácil'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/bb_back_squat_f_front/1.0.0/bb_back_squat_f_front_b_960_540.mp4',
     objetivo: 'Fortalecer o peitoral, ombros e tríceps com menor sobrecarga articular gravitacional.',
     impacto: 'Excelente substituto para flexões de braço convencionais, seguro para qualquer idade.',
     instrucoes: [
@@ -449,6 +467,7 @@ export const VIDEOS: Video[] = [
     category: 'fortalecimento-postura',
     tags: ['Sem equipamentos', 'Core'],
     intensity: 'Alta',
+    videoUrl: 'https://video.trainiac.fit/exercises/m_leg_extensions/1.0.0/m_leg_extensions_b_960_540.mp4',
     objetivo: 'Recrutar as fibras mais profundas do transverso do abdômen e estabilizadores espinhais.',
     impacto: 'Reduz significativamente a instabilidade lombar e melhora a simetria de todo o tronco.',
     instrucoes: [
@@ -474,6 +493,7 @@ export const VIDEOS: Video[] = [
     tags: ['Sem equipamentos', 'Core'],
     intensity: 'Alta',
     isRecommended: true,
+    videoUrl: 'https://video.trainiac.fit/exercises/m_seated_hip_abduction/1.0.0/m_seated_hip_abduction_b_960_540.mp4',
     objetivo: 'Exercitar os músculos oblíquos internos e externos do abdômen através de rotações espinhais.',
     impacto: 'Fortalece os estabilizadores rotacionais do tronco e ajuda a afinar a linha da cintura.',
     instrucoes: [
@@ -496,6 +516,7 @@ export const VIDEOS: Video[] = [
     category: 'core-abdominal',
     tags: ['Sem equipamentos', 'Reto Abdominal'],
     intensity: 'Alta',
+    videoUrl: 'https://video.trainiac.fit/exercises/m_unilateral_leg_curl/1.0.0/m_unilateral_leg_curl_b_960_540.mp4',
     objetivo: 'Focar na contração excêntrica do reto abdominal de forma isolada.',
     impacto: 'Fortalece a parte frontal do abdômen, melhorando a sustentação postural.',
     instrucoes: [
@@ -518,6 +539,7 @@ export const VIDEOS: Video[] = [
     category: 'core-abdominal',
     tags: ['Apoio', 'Adaptado'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/db_rdl/1.0.0/db_rdl_b_960_540.mp4',
     objetivo: 'Possibilitar o treino de abdômen com assistência física oferecida por um estofado estável.',
     impacto: 'Permite que iniciantes sem força de base nas costas consigam fazer abdominal com segurança.',
     instrucoes: [
@@ -540,6 +562,7 @@ export const VIDEOS: Video[] = [
     category: 'core-abdominal',
     tags: ['Deitado', 'Core Baixo'],
     intensity: 'Alta',
+    videoUrl: 'https://video.trainiac.fit/exercises/hollow_hold_rock/1.0.0/hollow_hold_rock_b_960_540.mp4',
     objetivo: 'Fortalecer a porção infra-abdominal e os flexores do quadril.',
     impacto: 'Ajuda a eliminar a flacidez abdominal profunda e melhora o retorno da bacia.',
     instrucoes: [
@@ -563,6 +586,7 @@ export const VIDEOS: Video[] = [
     tags: ['Sentado', 'Fácil'],
     intensity: 'Leve',
     isRecommended: true,
+    videoUrl: 'https://video.trainiac.fit/exercises/in_and_outs/1.0.0/in_and_outs_b_960_540.mp4',
     objetivo: 'Ativar a musculatura abdominal profunda de forma segura na posição de sentado.',
     impacto: 'Excelente alternativa para idosos ou pessoas com limitações na coluna ao deitar no chão.',
     instrucoes: [
@@ -588,6 +612,7 @@ export const VIDEOS: Video[] = [
     tags: ['Sem equipamentos', 'Sem saltar'],
     intensity: 'Leve',
     isRecommended: true,
+    videoUrl: 'https://video.trainiac.fit/exercises/kb_half_kneeling_windmill/1.0.0/kb_half_kneeling_windmill_b_960_540.mp4',
     objetivo: 'Trabalhar o condicionamento cardiopulmonar evitando saltos ou choques mecânicos.',
     impacto: 'Trabalho aeróbico completo com impacto zero para os joelhos e calcanhares.',
     instrucoes: [
@@ -610,6 +635,7 @@ export const VIDEOS: Video[] = [
     category: 'cardio-leve',
     tags: ['Sem equipamentos', 'Simples'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/kb_farmers_carry/1.0.0/kb_farmers_carry_b_960_540.mp4',
     objetivo: 'Simular uma caminhada contínua dentro do espaço doméstico, ativando circulação e batimentos.',
     impacto: 'Aumenta as calorias gastas, melhora a disposição corporal e ativa a endorfina digestiva.',
     instrucoes: [
@@ -632,6 +658,7 @@ export const VIDEOS: Video[] = [
     category: 'cardio-leve',
     tags: ['Com apoio', 'Pulsão'],
     intensity: 'Leve',
+    videoUrl: 'https://video.trainiac.fit/exercises/kb_half_kneeling_press/1.0.0/kb_half_kneeling_press_b_960_540.mp4',
     objetivo: 'Desenvolver resistência cardiovascular e fortalecer a coxa através de um passo cadenciado.',
     impacto: 'Ativação ideal para o fôlego e circulação inferior sem exaustão ou sobrecargas extremas.',
     instrucoes: [
